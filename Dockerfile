@@ -14,4 +14,4 @@ COPY ${JAR_FILE} app.jar
 EXPOSE 8081
 
 # 5. 컨테이너가 시작될 때 이 명령어를 실행하여 Spring Boot 앱을 구동
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
