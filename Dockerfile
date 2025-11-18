@@ -1,5 +1,5 @@
 # 1. Java 17 (JDK)의 경량화 버전을 기반 이미지로 사용
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk
 
 # 2. 컨테이너 내부의 작업 디렉토리 설정
 WORKDIR /app
