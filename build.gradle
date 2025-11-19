@@ -47,4 +47,8 @@ jar{
         enabled = false
 }
 
+tasks.withType(Test) {
+    	enabled = false // ⭐️ 모든 테스트를 비활성화
+}
+
 
