@@ -1,8 +1,10 @@
 package com.example.domain;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class Member {
 	private String userId;
 	private String userPwd; // (DB의 `password` 컬럼과 매핑됨)
