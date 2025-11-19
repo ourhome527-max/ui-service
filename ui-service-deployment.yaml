@@ -17,7 +17,7 @@ spec:
       - name: ui-service-container
         # ⭐️ 1. (수정됨) Docker Hub의 내 이미지 주소
         #    (nks-kubectl 서버에서 'docker push'한 주소)
-        image: "ourhome527/ui-service:v1" 
+        image: "ourhome527/ui-service:latest" 
         ports:
         - containerPort: 8080 # ⭐️ Spring Boot 앱 포트 (application.yml의 server.port)
       
