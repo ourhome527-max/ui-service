@@ -8,6 +8,6 @@ public class ViewController {
 
 	@GetMapping("/user/login-user")
 	public String getLoginPage() {
-		return "user/login-user";
+		return "login-user";
 	}
 }
