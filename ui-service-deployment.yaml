@@ -34,8 +34,7 @@ metadata:
 # ... (이하 Service 부분은 동일) ...
 # ⭐️ 3. (중요) NCP 로드밸런서를 자동으로 생성하라는 주석
   annotations:
-    service.beta.kubernetes.io/ncloud-load-balancer-layer-type: "nlb"
-    service.beta.kubernetes.io/ncloud-load-balancer-internal: "false" # Public LB
+    service.beta.kubernetes.io/ncloud-load-balancer-layer-type: "alb"
 spec:
   # ⭐️ 4. (중요) 외부 접속이 가능하도록 'LoadBalancer' 타입을 지정
   type: LoadBalancer
