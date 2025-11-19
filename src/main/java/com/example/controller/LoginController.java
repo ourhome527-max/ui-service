@@ -27,7 +27,7 @@ public class LoginController {
 	private final MemberClient memberClient;
 
 	@PostMapping("/login")
-	public ResponseEntity<Member> login(@RequestBody UserLoginReq request) {
+	public ResponseEntity<Member> login(UserLoginReq request) {
 		log.info("UI Service: Attempting login for user: {}", request.getUserId());
 
 		try {
