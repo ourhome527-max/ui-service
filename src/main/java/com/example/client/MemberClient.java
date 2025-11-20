@@ -11,5 +11,5 @@ import com.example.domain.dto.UserLoginReq;
 @FeignClient(name = "member-api", url = "http://member-service:8081/api/members")
 public interface MemberClient {
 	@PostMapping("/login")
-	public ResponseEntity<Member> login(@RequestBody UserLoginReq request);
+	public ResponseEntity<Member> login(UserLoginReq request);
 }
