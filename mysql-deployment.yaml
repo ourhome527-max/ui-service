@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "rootpassword" # (실제 운영시엔 Secret 사용 권장)
+        - name: MYSQL_DATABASE
+          value: "bookdb" # 생성할 데이터베이스 이름
+        ports:
+        - containerPort: 3306
+        # (선택사항: 데이터 영구 저장을 위한 Volume 마운트 - 지금은 생략)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service # ⭐️ member-service가 이 이름으로 찾습니다.
+spec:
+  selector:
+    app: mysql
+  type: ClusterIP # ⭐️ 내부 통신 전용 (NodePort 불필요)
+  ports:
+    - port: 3306
+      targetPort: 3306
+      nodePort: 30800
