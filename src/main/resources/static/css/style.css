@@ -413,3 +413,119 @@
 	color: #ffffff;
 	font-size: 32px;
 }
+
+/* * =========================================
+ * 4. regist-member-page.html (회원가입 페이지) 스타일
+ * (★ 새로 추가된 부분 ★)
+ * =========================================
+ */
+
+.regist-member-page {
+	background-color: #969191;
+	/* 배경색 */
+	width: 100%;
+	min-width: 1440px;
+	min-height: 1024px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	/* 절대 위치 자식 요소를 위해 */
+}
+
+.regist-member-page .div {
+	position: absolute;
+	top: 0;
+	left: 1px;
+	width: 531px;
+	height: 245px;
+	background-color: #969191;
+	border-radius: 30px;
+	border: 5px solid;
+	border-color: #b1b1b1;
+}
+
+.regist-member-page .line {
+	position: absolute;
+	top: 115px;
+	left: 0;
+	width: 532px;
+	height: 8px;
+}
+
+.regist-member-page .text-wrapper {
+	top: 45px;
+	left: 32px;
+	width: 127px;
+	font-family: "Inter-Regular", Helvetica;
+	font-weight: 400;
+	color: #b1b1b1;
+	font-size: 30px;
+	position: absolute;
+	letter-spacing: 0;
+	line-height: normal;
+}
+
+.regist-member-page .text-wrapper-2 {
+	top: 161px;
+	left: 32px;
+	width: 144px;
+	font-family: "Inter-Regular", Helvetica;
+	font-weight: 400;
+	color: #b1b1b1;
+	font-size: 30px;
+	white-space: nowrap;
+	position: absolute;
+	letter-spacing: 0;
+	line-height: normal;
+}
+
+.regist-member-page .login-box {
+	margin-left: 454px;
+	width: 536px;
+	height: 245px;
+	position: relative;
+	margin-top: 139px;
+}
+
+.regist-member-page .login-box-2 {
+	margin-left: 454px;
+	width: 530.91px;
+	height: 370px;
+	margin-top: 74px;
+	background-color: #969191;
+	border-radius: 30px;
+	border: 5px solid;
+	border-color: #b1b1b1;
+}
+
+.regist-member-page .text-wrapper-3 {
+	top: 17px;
+	left: 199px;
+	font-family: "Istok Web-Bold", Helvetica;
+	font-weight: 700;
+	color: #ffffff;
+	font-size: 32px;
+	position: absolute;
+	letter-spacing: 0;
+	line-height: normal;
+}
+
+.regist-member-page .login-btn {
+	margin-left: 455px;
+	width: 489px;
+	height: 63px;
+	position: relative;
+	margin-top: 51px;
+}
+
+.regist-member-page .login-btn-2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 487px;
+	height: 63px;
+	background-color: #1db51d;
+	border-radius: 30px;
+	border: 2px solid;
+	border-color: #00000061;
+}

@@ -52,4 +52,10 @@ public class ViewController {
 		log.info("getLoginPage 메서드 실행");
 		return "login-user";
 	}
+
+	@GetMapping("/user/regist-page")
+	public String getRegistPage() {
+		log.info("getRegistPage 메서드 실행");
+		return "regist-user";
+	}
 }
