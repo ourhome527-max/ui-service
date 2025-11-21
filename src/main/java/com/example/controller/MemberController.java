@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.client.MemberClient;
 import com.example.domain.dto.RegistMemberReq;
-
+	
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
