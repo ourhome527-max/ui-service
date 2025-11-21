@@ -1,26 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 
 <head>
+	<title>Regist Page</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta charset="utf-8" />
-	<link rel="stylesheet" href="/css/globals.css" />
+	<link rel="stylesheet" href="/css/global.css" />
 	<link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body>
 	<div class="regist-member-page">
-		<div class="login-box">
-			<div class="div"></div>
-			<img class="line" src="img/line-34.svg" />
-			<div class="text-wrapper">아이디</div>
-			<div class="text-wrapper-2">비밀번호</div>
-		</div>
-		<div class="login-box-2"></div>
-		<div class="login-btn">
-			<div class="login-btn-2"></div>
-			<div class="text-wrapper-3">회원 가입</div>
-		</div>
+		<!-- ⭐️ 1. div 대신 form 태그 사용, action은 회원가입 처리 경로 -->
+		<form action="/user/regist" method="post">
+
+			<div class="regist-box">
+				<div class="div">
+					<!-- ⭐️ 2. div 대신 input 태그 사용 -->
+					<!-- 아이디 입력 -->
+					<div class="input-group" style="position: absolute; top: 45px; left: 190px;">
+						<input type="text" name="userId" placeholder="아이디를 입력하세요"
+							style="width: 300px; height: 40px; font-size: 20px; border: none; background: transparent; outline: none;">
+					</div>
+
+					<!-- 비밀번호 입력 -->
+					<div class="input-group" style="position: absolute; top: 161px; left: 190px;">
+						<input type="password" name="userPwd" placeholder="비밀번호를 입력하세요"
+							style="width: 300px; height: 40px; font-size: 20px; border: none; background: transparent; outline: none;">
+					</div>
+				</div>
+
+				<div class="text-wrapper">아이디</div>
+				<div class="text-wrapper-2">비밀번호</div>
+			</div>
+
+			<div class="login-box-2"></div>
+
+			<div class="login-btn">
+				<!-- ⭐️ 3. div 대신 button 태그 사용 -->
+				<button type="submit" class="login-btn-2" style="cursor: pointer;">
+					<div class="text-wrapper-3">회원 가입</div>
+				</button>
+			</div>
+
+		</form>
 	</div>
 </body>
 
