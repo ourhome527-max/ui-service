@@ -414,118 +414,71 @@
 	font-size: 32px;
 }
 
-/* * =========================================
- * 4. regist-member-page.html (회원가입 페이지) 스타일
- * (★ 새로 추가된 부분 ★)
- * =========================================
- */
-
-.regist-member-page {
+/* =========================================
+* 회원가입 페이지 스타일 *=========================================*/ .regist-member-page {
 	background-color: #969191;
-	/* 배경색 */
 	width: 100%;
 	min-width: 1440px;
 	min-height: 1024px;
 	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.regist-box {
+	width: 600px;
+	background-color: #969191;
+	border: 5px solid #b1b1b1;
+	border-radius: 30px;
+	padding: 40px 50px;
+	box-sizing: border-box;
+}
+
+.input-row {
+	display: flex;
 	flex-direction: column;
-	position: relative;
-	/* 절대 위치 자식 요소를 위해 */
+	margin-bottom: 40px;
 }
 
-.regist-member-page .div {
-	position: absolute;
-	top: 0;
-	left: 1px;
-	width: 531px;
-	height: 245px;
-	background-color: #969191;
-	border-radius: 30px;
-	border: 5px solid;
-	border-color: #b1b1b1;
-}
-
-.regist-member-page .line {
-	position: absolute;
-	top: 115px;
-	left: 0;
-	width: 532px;
-	height: 8px;
-}
-
-.regist-member-page .text-wrapper {
-	top: 45px;
-	left: 32px;
-	width: 127px;
+.label {
 	font-family: "Inter-Regular", Helvetica;
-	font-weight: 400;
-	color: #b1b1b1;
-	font-size: 30px;
-	position: absolute;
-	letter-spacing: 0;
-	line-height: normal;
+	font-size: 28px;
+	color: #e0dfdf;
+	margin-bottom: 12px;
 }
 
-.regist-member-page .text-wrapper-2 {
-	top: 161px;
-	left: 32px;
-	width: 144px;
-	font-family: "Inter-Regular", Helvetica;
-	font-weight: 400;
-	color: #b1b1b1;
-	font-size: 30px;
-	white-space: nowrap;
-	position: absolute;
-	letter-spacing: 0;
-	line-height: normal;
-}
-
-.regist-member-page .login-box {
-	margin-left: 454px;
-	width: 536px;
-	height: 245px;
-	position: relative;
-	margin-top: 139px;
-}
-
-.regist-member-page .login-box-2 {
-	margin-left: 454px;
-	width: 530.91px;
-	height: 370px;
-	margin-top: 74px;
-	background-color: #969191;
-	border-radius: 30px;
-	border: 5px solid;
-	border-color: #b1b1b1;
-}
-
-.regist-member-page .text-wrapper-3 {
-	top: 17px;
-	left: 199px;
-	font-family: "Istok Web-Bold", Helvetica;
-	font-weight: 700;
+.input-row input {
+	width: 100%;
+	height: 55px;
+	border: none;
+	outline: none;
+	border-bottom: 3px solid #b1b1b1;
+	background: transparent;
+	font-size: 22px;
 	color: #ffffff;
-	font-size: 32px;
-	position: absolute;
-	letter-spacing: 0;
-	line-height: normal;
+	padding: 5px;
 }
 
-.regist-member-page .login-btn {
-	margin-left: 455px;
-	width: 489px;
-	height: 63px;
-	position: relative;
-	margin-top: 51px;
+.input-row input::placeholder {
+	color: #ddd;
 }
 
-.regist-member-page .login-btn-2 {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 487px;
-	height: 63px;
+/* 버튼 영역 */
+.regist-btn-wrapper {
+	width: 600px;
+	margin-top: 40px;
+	display: flex;
+	justify-content: center;
+}
+
+.regist-btn {
+	width: 450px;
+	height: 65px;
 	background-color: #1db51d;
 	border-radius: 30px;
-	border: 2px solid;
-	border-color: #00000061;
+	border: 2px solid #00000061;
+	font-family: "Istok Web-Bold", Helvetica;
+	font-size: 32px;
+	color: #ffffff;
+	cursor: pointer;
 }
