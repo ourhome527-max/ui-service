@@ -67,7 +67,7 @@ public class MemberController {
 	/*
 	 * 로그아웃
 	 */
-	@GetMapping("/logout")
+	@GetMapping("/user/logout")
 	public String logoutByBtn(HttpServletRequest request) {
 		log.info("logoutByBtn 메서드 실행");
 		sessionUtil.expireSession(request);
