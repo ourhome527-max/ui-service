@@ -1,7 +1,5 @@
 package com.example.controller;
 
-import java.lang.reflect.Member;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -9,8 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.client.MemberClient;
+import com.example.config.SessionUtil;
+import com.example.domain.Member;
+import com.example.domain.dto.MemberLoginReq;
 import com.example.domain.dto.RegistMemberReq;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MemberController {
 	private final MemberClient memberClient;
+	private final SessionUtil sessionUtil;
 
 	@PostMapping("/user/regist")
 	public String registMember(RegistMemberReq request) {
@@ -35,6 +38,20 @@ public class MemberController {
 		} catch (Exception e) {
 			log.error("회원가입 오류: ", e);
 			return "redirect:/user/regist-page?error=true";
+		}
+	}
+
+	@PostMapping("/user/login")
+	public String login(MemberLoginReq request, HttpServletRequest servletRequset) {
+		try {
+			ResponseEntity<Member> apiResponse = memberClient.login(request);
+			if (apiResponse.getStatusCode() == HttpStatus.OK) {
+				return "redirect:/";
+			}
+			return "redirect:/user/login?error=true";
+		} catch (Exception e) {
+			log.error("로그인 오류: ", e);
+			return "redirect:/user/login?error=true";
 		}
 	}
 }
