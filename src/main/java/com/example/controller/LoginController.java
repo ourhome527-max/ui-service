@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.client.MemberClient;
 import com.example.domain.Member;
-import com.example.domain.dto.UserLoginReq;
+import com.example.domain.dto.MemberLoginReq;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ public class LoginController {
 	private final MemberClient memberClient;
 
 	@PostMapping("/login")
-	public ResponseEntity<Member> login(UserLoginReq request) {
+	public ResponseEntity<Member> login(MemberLoginReq request) {
 		log.info("UI Service: Attempting login for user: {}", request.getUserId());
 
 		try {
@@ -37,7 +37,7 @@ public class LoginController {
 			// ⭐️ 2. 응답이 200 OK일 경우
 			if (apiResponse.getStatusCode() == HttpStatus.OK) {
 				Member loginMember = apiResponse.getBody();
-				log.info("UI Service: Login success, User: {}", loginMember.getUserName());
+				log.info("UI Service: Login success, User: {}", loginMember.getMemberName());
 
 				// 3. 브라우저에 Member 객체와 함께 200 OK 반환
 				return ResponseEntity.ok(loginMember);
