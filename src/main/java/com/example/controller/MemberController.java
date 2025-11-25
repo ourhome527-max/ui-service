@@ -46,6 +46,8 @@ public class MemberController {
 		try {
 			ResponseEntity<Member> apiResponse = memberClient.login(request);
 			if (apiResponse.getStatusCode() == HttpStatus.OK) {
+				Member loginMember = apiResponse.getBody();
+				sessionUtil.createSession(servletRequset, loginMember);
 				return "redirect:/";
 			}
 			return "redirect:/user/login?error=true";
