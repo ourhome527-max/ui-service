@@ -26,7 +26,7 @@ public class MemberController {
 			ResponseEntity apiResponse = memberClient.registMember(request);
 			// 회원가입 성공
 			if (apiResponse.getStatusCode() == HttpStatus.OK) {
-				return "redirect:/index"; // ⭐ index.html로 이동
+				return "redirect:/"; // ⭐ index.html로 이동
 			}
 
 			// 실패 → 회원가입 페이지로 다시 보내기 (또는 에러 페이지)
