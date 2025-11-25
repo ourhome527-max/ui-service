@@ -30,11 +30,11 @@ public class MemberController {
 			}
 
 			// 실패 → 회원가입 페이지로 다시 보내기 (또는 에러 페이지)
-			return "redirect:/user/regist?error=true";
+			return "redirect:/user/regist-page?error=true";
 
 		} catch (Exception e) {
 			log.error("회원가입 오류: ", e);
-			return "redirect:/user/regist?error=true";
+			return "redirect:/user/regist-page?error=true";
 		}
 	}
 }

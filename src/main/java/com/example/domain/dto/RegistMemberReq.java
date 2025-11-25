@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class RegistMemberReq {
-	private String userId;
-	private String userPwd;
-	private String userName;
+	private String memberId;
+	private String memberPwd;
+	private String memberName;
 }
