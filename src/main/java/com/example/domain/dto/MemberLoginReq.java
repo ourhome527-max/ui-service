@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class MemberLoginReq {
-	private String userId;
-	private String userPwd;
+	private String memberId;
+	private String memberPwd;
 }
