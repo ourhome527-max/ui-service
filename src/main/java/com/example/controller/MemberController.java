@@ -3,6 +3,7 @@ package com.example.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -23,6 +24,9 @@ public class MemberController {
 	private final MemberClient memberClient;
 	private final SessionUtil sessionUtil;
 
+	/*
+	 * 회원 등록
+	 */
 	@PostMapping("/user/regist")
 	public String registMember(RegistMemberReq request) {
 		try {
@@ -41,6 +45,9 @@ public class MemberController {
 		}
 	}
 
+	/*
+	 * 로그인
+	 */
 	@PostMapping("/user/login")
 	public String login(MemberLoginReq request, HttpServletRequest servletRequset) {
 		try {
@@ -55,5 +62,15 @@ public class MemberController {
 			log.error("로그인 오류: ", e);
 			return "redirect:/user/login?error=true";
 		}
+	}
+
+	/*
+	 * 로그아웃
+	 */
+	@GetMapping("/logout")
+	public String logoutByBtn(HttpServletRequest request) {
+		log.info("logoutByBtn 메서드 실행");
+		sessionUtil.expireSession(request);
+		return "redirect:/";
 	}
 }
