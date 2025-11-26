@@ -17,6 +17,6 @@ public interface ArticleClient {
 	@GetMapping(value = "/article-list")
 	public List<Map<String, String>> getArticleList();
 
-	@PostMapping("/article/regist")
+	@PostMapping("/regist")
 	public ResponseEntity<Void> registArticle(@RequestBody RegistArticleReq request);
 }
