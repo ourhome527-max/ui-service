@@ -12,14 +12,11 @@
 	<div class="index">
 		<div class="frame-box">
 
-			<div class="search-box">
-			</div>
+			<div class="search-box"></div>
 
 			<div class="div">
 				<div th:if="${session.loginUser == null}">
-					<button type="button" class="login-btn" onclick="location.href='/user'">
-						로그인
-					</button>
+					<button type="button" class="login-btn" onclick="location.href='/user'">로그인</button>
 				</div>
 
 				<div class="user-profile-wrapper" th:if="${session.loginUser != null}">
@@ -29,21 +26,23 @@
 							<span class="user-id" th:text="${session.loginUser.memberId} + '님'">userId님</span>
 							<span class="user-email">test1234@test.com</span>
 						</div>
-						<button type="button" class="logout-btn-small" onclick="location.href='/user/logout'">
-							로그아웃
-						</button>
+						<button type="button" class="logout-btn-small"
+							onclick="location.href='/user/logout'">로그아웃</button>
 					</div>
 				</div>
-
 			</div>
 
-			<div class="login-box">
-			</div>
+			<div class="login-box"></div>
 
-			<!-- 게시글 목록 (기존과 동일) -->
+			<!-- 게시글 목록 -->
 			<div class="article-list-box">
 
-				<h2 class="text-wrapper">글 목록</h2>
+				<div class="article-list-header">
+					<h2 class="text-wrapper">글 목록</h2>
+
+					<!-- ✔ 글쓰기 버튼 추가됨 -->
+					<a href="/article/regist" class="write-btn">글 작성</a>
+				</div>
 
 				<div class="article-list">
 
@@ -57,7 +56,7 @@
 						<div class="article-image"></div>
 
 						<div class="article-content">
-							<h3 class="article-title" th:text="${article.title}">이것은 가짜 제목입니다.</h3>
+							<h3 class="article-title" th:text="${article.title}">가짜 제목</h3>
 							<span class="article-info" th:text="${article.info}">4분전 / userId</span>
 						</div>
 

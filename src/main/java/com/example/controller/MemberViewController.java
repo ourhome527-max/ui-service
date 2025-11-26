@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequiredArgsConstructor
-public class ViewController {
+public class MemberViewController {
 	private final ArticleClient articleClient;
 
 	/**
