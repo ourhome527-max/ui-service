@@ -3,11 +3,14 @@ package com.example.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.client.ArticleClient;
 import com.example.config.SessionUtil;
+import com.example.domain.Article;
 import com.example.domain.Member;
 import com.example.domain.dto.RegistArticleReq;
 
@@ -31,7 +34,7 @@ public class ArticleViewController {
 	@PostMapping("/article/regist")
 	public String registArticle(RegistArticleReq request, HttpServletRequest httpRequest) {
 		try {
-			Member sessionMember = (Member)sessionUtil.getSession(httpRequest);
+			Member sessionMember = (Member) sessionUtil.getSession(httpRequest);
 			if (sessionMember == null) {
 				return "redirect:/user/login";
 			}
@@ -51,4 +54,23 @@ public class ArticleViewController {
 			return "redirect:/article/regist?error=true";
 		}
 	}
+
+	@GetMapping("/article/detail/{articleId}")
+	public String getArticleDetail(@PathVariable("articleId") int articleId, Model model) {
+		try {
+			ResponseEntity<Article> response = articleClient.getArticleById(articleId);
+
+			if (response.getStatusCode() == HttpStatus.OK && response.getBody() != null) {
+				model.addAttribute("article", response.getBody());
+				return "article/detail-article";
+			} else {
+				return "redirect:/?error=notfound";
+			}
+
+		} catch (Exception e) {
+			log.error("게시글 상세 조회 오류: {}", e.getMessage());
+			return "redirect:/?error=true";
+		}
+	}
+
 }

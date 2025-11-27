@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -21,5 +22,8 @@ public interface ArticleClient {
 	ResponseEntity<List<Article>> getArticleList();
 
 	@PostMapping("/regist")
-	public ResponseEntity<Void> registArticle(@RequestBody RegistArticleReq request);
+	ResponseEntity<Void> registArticle(@RequestBody RegistArticleReq request);
+
+	@GetMapping("/api/article/{articleId}")
+    ResponseEntity<Article> getArticleById(@PathVariable("articleId") int articleId);
 }
