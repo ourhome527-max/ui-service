@@ -40,7 +40,6 @@
 				<div class="article-list-header">
 					<h2 class="text-wrapper">글 목록</h2>
 
-					<!-- ✔ 글쓰기 버튼 추가됨 -->
 					<a href="/article/regist" class="write-btn">글 작성</a>
 				</div>
 
@@ -50,19 +49,27 @@
 						<p>게시글이 없습니다.</p>
 					</div>
 
-					<a href="#" class="article-item" th:unless="${articleList == null or articleList.isEmpty()}"
-						th:each="article : ${articleList}">
+					<!-- 수정된 article-item -->
+					<a href="#" class="article-item" th:each="article : ${articleList}"
+						th:unless="${articleList == null or articleList.isEmpty()}">
 
 						<div class="article-image"></div>
 
 						<div class="article-content">
 							<h3 class="article-title" th:text="${article.title}">가짜 제목</h3>
-							<span class="article-info" th:text="${article.info}">4분전 / userId</span>
+
+							<!-- 작성일 / 작성자 표시 -->
+							<span class="article-info"
+								th:text="${#temporals.format(article.regAt, 'yyyy-MM-dd HH:mm')} + ' / ' + article.writerId">
+								2024-01-01 13:00 / writer
+							</span>
 						</div>
 
+						<!-- 추천수 기능 없으므로 제거 또는 기본 표시 -->
 						<div class="article-recs">
-							<span th:text="${article.recs}">[15]</span>
+							<span>[0]</span>
 						</div>
+
 					</a>
 				</div>
 
