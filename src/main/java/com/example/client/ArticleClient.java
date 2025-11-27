@@ -24,6 +24,6 @@ public interface ArticleClient {
 	@PostMapping("/regist")
 	ResponseEntity<Void> registArticle(@RequestBody RegistArticleReq request);
 
-	@GetMapping("/api/article/{articleId}")
+	@GetMapping("/{articleId}")
     ResponseEntity<Article> getArticleById(@PathVariable("articleId") int articleId);
 }
