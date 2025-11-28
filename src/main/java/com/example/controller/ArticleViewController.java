@@ -41,6 +41,8 @@ public class ArticleViewController {
 	public String registArticle(RegistArticleReq request,
 			@RequestParam(value = "files", required = false) @RequestPart(value = "files", required = false) List<MultipartFile> files,
 			HttpServletRequest httpRequest) {
+		log.info("게시글 등록 요청: title={}, writerId={}, files={}", request.getTitle(), request.getWriterId(),
+				(files != null ? files.size() : 0));
 		try {
 			Member sessionMember = (Member) sessionUtil.getSession(httpRequest);
 			if (sessionMember == null) {
