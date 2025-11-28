@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.config.FeignConfig;
 import com.example.domain.Article;
 import com.example.domain.dto.RegistArticleReq;
 
-@FeignClient(name = "article-api", url = "http://article-service:8082/api/article")
+@FeignClient(name = "article-api", url = "http://article-service:8082/api/article", configuration = FeignConfig.class)
 public interface ArticleClient {
 
 //	@GetMapping(value = "/article-list")
