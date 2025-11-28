@@ -20,7 +20,6 @@ public class FeignConfig {
 
 	@Bean
 	public Encoder feignFormEncoder() {
-		// SpringEncoder는 ObjectFactory<HttpMessageConverters> 를 받음
-		return new SpringFormEncoder(new SpringEncoder(messageConverters));
+		return new SpringFormEncoder(); // SpringEncoder를 안 직접 다루고 SpringFormEncoder만 사용
 	}
 }

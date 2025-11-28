@@ -17,7 +17,7 @@ import com.example.config.FeignConfig;
 import com.example.domain.Article;
 import com.example.domain.dto.RegistArticleReq;
 
-@FeignClient(name = "article-api", url = "http://article-service:8082/api/article", configuration = FeignConfig.class)
+@FeignClient(name = "article-api", url = "http://article-service:8082/api/article")
 public interface ArticleClient {
 
 //	@GetMapping(value = "/article-list")
@@ -27,7 +27,7 @@ public interface ArticleClient {
 	ResponseEntity<List<Article>> getArticleList();
 
 	@PostMapping(value = "/regist", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	ResponseEntity<Void> registArticle(@RequestPart("data") RegistArticleReq request,
+	ResponseEntity<Void> registArticle(@ModelAttribute RegistArticleReq request,
 			@RequestPart(value = "files", required = false) List<MultipartFile> files);
 
 	@GetMapping("/{articleId}")
