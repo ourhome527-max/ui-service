@@ -12,7 +12,7 @@ import feign.form.spring.SpringFormEncoder;
 @Configuration
 public class FeignConfig {
 
-	private final ObjectFactory<HttpMessageConverters> messageConverters;
+//	private final ObjectFactory<HttpMessageConverters> messageConverters;
 //
 //	public FeignConfig(ObjectFactory<HttpMessageConverters> messageConverters) {
 //		this.messageConverters = messageConverters;
