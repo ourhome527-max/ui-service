@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.client.ArticleClient;
 import com.example.config.SessionUtil;
@@ -17,6 +19,8 @@ import com.example.domain.dto.RegistArticleReq;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -32,7 +36,10 @@ public class ArticleViewController {
 
 	// 게시글 등록
 	@PostMapping("/article/regist")
-	public String registArticle(RegistArticleReq request, HttpServletRequest httpRequest) {
+	// HTML Form에서 넘어오는 데이터는 @ModelAttribute(생략 가능), 파일은 @RequestParam 혹은 인자로 받음
+	public String registArticle(RegistArticleReq request,
+			@RequestParam(value = "files", required = false) List<MultipartFile> files,
+			HttpServletRequest httpRequest) {
 		try {
 			Member sessionMember = (Member) sessionUtil.getSession(httpRequest);
 			if (sessionMember == null) {
@@ -40,8 +47,8 @@ public class ArticleViewController {
 			}
 			request.setWriterId(sessionMember.getMemberId());
 
-			// 3. Article-Service로 요청 전송
-			ResponseEntity<Void> response = articleClient.registArticle(request);
+			// 변경점: request DTO와 함께 파일 리스트도 Feign Client로 전달
+			ResponseEntity<Void> response = articleClient.registArticle(request, files);
 
 			if (response.getStatusCode() == HttpStatus.OK) {
 				return "redirect:/";

@@ -7,7 +7,8 @@
 </head>
 
 <body>
-	<form action="/article/regist" method="post">
+	<!-- 중요: 파일 업로드를 위해 enctype="multipart/form-data" 속성 추가 -->
+	<form action="/article/regist" method="post" enctype="multipart/form-data">
 		<label for="category">카테고리: </label>
 		<select name="category">
 			<option value="">--카테고리를 선정해주세요--</option>
@@ -18,8 +19,15 @@
 
 		<label for="title">제목: </label>
 		<input type="text" name="title"><br>
+
 		<label for="content">내용: </label>
-		<textarea name="content"></textarea>
+		<textarea name="content"></textarea><br>
+
+		<!-- 파일 업로드 입력 필드 추가 (multiple 속성으로 다중 파일 선택 가능) -->
+		<!-- name="files"는 WebController의 @RequestParam("files")와 일치해야 합니다. -->
+		<label for="files">파일 첨부: </label>
+		<input type="file" name="files" multiple><br><br>
+
 		<input type="submit" value="작성">
 	</form>
 </body>

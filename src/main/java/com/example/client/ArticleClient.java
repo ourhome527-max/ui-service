@@ -3,11 +3,14 @@ package com.example.client;
 import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.domain.Article;
 import com.example.domain.dto.RegistArticleReq;
@@ -21,9 +24,11 @@ public interface ArticleClient {
 	@GetMapping("/article-list")
 	ResponseEntity<List<Article>> getArticleList();
 
-	@PostMapping("/regist")
-	ResponseEntity<Void> registArticle(@RequestBody RegistArticleReq request);
+	// 변경점: consumes 설정 추가, @RequestBody -> @RequestPart로 변경, 파일 파라미터 추가
+	@PostMapping(value = "/regist", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	ResponseEntity<Void> registArticle(@RequestPart("article") RegistArticleReq request,
+			@RequestPart(value = "files", required = false) List<MultipartFile> files);
 
 	@GetMapping("/{articleId}")
-    ResponseEntity<Article> getArticleById(@PathVariable("articleId") int articleId);
+	ResponseEntity<Article> getArticleById(@PathVariable("articleId") int articleId);
 }
