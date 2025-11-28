@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.client.ArticleClient;
@@ -38,7 +39,7 @@ public class ArticleViewController {
 	@PostMapping("/article/regist")
 	// HTML Form에서 넘어오는 데이터는 @ModelAttribute(생략 가능), 파일은 @RequestParam 혹은 인자로 받음
 	public String registArticle(RegistArticleReq request,
-			@RequestParam(value = "files", required = false) List<MultipartFile> files,
+			@RequestParam(value = "files", required = false) @RequestPart(value = "files", required = false) List<MultipartFile> files,
 			HttpServletRequest httpRequest) {
 		try {
 			Member sessionMember = (Member) sessionUtil.getSession(httpRequest);

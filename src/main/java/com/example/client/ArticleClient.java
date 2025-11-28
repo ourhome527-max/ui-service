@@ -26,9 +26,8 @@ public interface ArticleClient {
 	@GetMapping("/article-list")
 	ResponseEntity<List<Article>> getArticleList();
 
-	// 변경점: consumes 설정 추가, @RequestBody -> @RequestPart로 변경, 파일 파라미터 추가
 	@PostMapping(value = "/regist", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	ResponseEntity<Void> registArticle(@ModelAttribute RegistArticleReq request,
+	ResponseEntity<Void> registArticle(@RequestPart("data") RegistArticleReq request,
 			@RequestPart(value = "files", required = false) List<MultipartFile> files);
 
 	@GetMapping("/{articleId}")
