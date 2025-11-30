@@ -27,7 +27,7 @@ public interface ArticleClient {
 	ResponseEntity<List<Article>> getArticleList();
 
 	@PostMapping(value = "/regist", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	ResponseEntity<Void> registArticle(@ModelAttribute RegistArticleReq request,
+	ResponseEntity<Void> registArticle(@RequestPart RegistArticleReq request,
 			@RequestPart(value = "files", required = false) List<MultipartFile> files);
 
 	@GetMapping("/{articleId}")
