@@ -2,6 +2,7 @@ package com.example.client;
 
 import java.util.List;
 
+
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.config.FeignConfig;
 import com.example.domain.Article;
+import com.example.domain.dto.ArticleDetailRes;
 import com.example.domain.dto.RegistArticleReq;
 
 @FeignClient(name = "article-api", url = "http://article-service:8082/api/article")
@@ -31,5 +33,5 @@ public interface ArticleClient {
 			@RequestPart(value = "files", required = false) List<MultipartFile> files);
 
 	@GetMapping("/{articleId}")
-	ResponseEntity<Article> getArticleById(@PathVariable("articleId") int articleId);
+	ResponseEntity<ArticleDetailRes> getArticleById(@PathVariable("articleId") int articleId);
 }

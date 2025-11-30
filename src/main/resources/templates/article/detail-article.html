@@ -13,12 +13,27 @@
 		<h2 class="detail-title" th:text="${article.title}">제목</h2>
 
 		<div class="detail-info">
+			<!-- 작성자, 날짜 등 -->
 			<span th:text="'작성자: ' + ${article.writerId}"></span>
 			<span th:text="'작성일: ' + ${article.regAt}"></span>
 		</div>
 
-		<div class="detail-content" th:text="${article.content}">
-			내용
+		<div class="detail-content">
+			<!-- 1. 텍스트 내용 출력 -->
+			<p th:text="${article.content}"></p>
+			<br>
+
+			<!-- 2. 첨부파일(이미지) 반복 출력 -->
+			<!-- article.files가 비어있지 않다면 실행 -->
+			<div th:if="${article.files != null and !article.files.isEmpty()}">
+				<div th:each="file : ${article.files}">
+
+					<!-- 요청하신 대로 DTO에 저장된 path를 src에 바로 사용 -->
+					<img th:src="${file.path}" style="max-width: 500px; display: block; margin: 10px 0;"
+						th:alt="${file.originalName}" />
+
+				</div>
+			</div>
 		</div>
 
 		<a href="/" class="btn-back">목록으로</a>

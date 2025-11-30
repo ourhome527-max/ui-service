@@ -15,6 +15,7 @@ import com.example.client.ArticleClient;
 import com.example.config.SessionUtil;
 import com.example.domain.Article;
 import com.example.domain.Member;
+import com.example.domain.dto.ArticleDetailRes;
 import com.example.domain.dto.RegistArticleReq;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -68,7 +69,7 @@ public class ArticleViewController {
 	@GetMapping("/article/detail/{articleId}")
 	public String getArticleDetail(@PathVariable("articleId") int articleId, Model model) {
 		try {
-			ResponseEntity<Article> response = articleClient.getArticleById(articleId);
+			ResponseEntity<ArticleDetailRes> response = articleClient.getArticleById(articleId);
 
 			if (response.getStatusCode() == HttpStatus.OK && response.getBody() != null) {
 				model.addAttribute("article", response.getBody());
