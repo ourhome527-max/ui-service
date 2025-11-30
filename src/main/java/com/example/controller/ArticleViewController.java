@@ -72,7 +72,18 @@ public class ArticleViewController {
 			ResponseEntity<ArticleDetailRes> response = articleClient.getArticleById(articleId);
 
 			if (response.getStatusCode() == HttpStatus.OK && response.getBody() != null) {
-				model.addAttribute("article", response.getBody());
+				ArticleDetailRes article = response.getBody();
+				// [Log] 3. 실제 받아온 데이터 확인 (제목, 작성자, 파일 목록 등)
+				log.info("게시글 데이터 수신 성공 -> ID: {}, 제목: {}, 작성자: {}", article.getId(), article.getTitle(),
+						article.getWriterId());
+
+				if (article.getFiles() != null) {
+					log.info("첨부파일 개수: {}", article.getFiles().size());
+					article.getFiles().forEach(file -> log.info(" - 파일정보: id={}, path={}, name={}", file.getFileId(),
+							file.getPath(), file.getOriginalName()));
+				} else {
+					log.info("첨부파일 없음 (files list is null)");
+				}
 				return "article/detail-article";
 			} else {
 				return "redirect:/?error=notfound";
