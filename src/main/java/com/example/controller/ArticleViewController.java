@@ -84,6 +84,8 @@ public class ArticleViewController {
 				} else {
 					log.info("첨부파일 없음 (files list is null)");
 				}
+
+				model.addAttribute("article", article);
 				return "article/detail-article";
 			} else {
 				return "redirect:/?error=notfound";
