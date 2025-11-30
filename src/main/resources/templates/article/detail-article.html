@@ -34,6 +34,11 @@
 
 				</div>
 			</div>
+
+			<!-- 3. 파일이 없을 경우 메시지 출력 (추가된 부분) -->
+			<div th:if="${article.files == null or article.files.isEmpty()}">
+				<p style="color: #999; font-style: italic;">파일이 없습니다.</p>
+			</div>
 		</div>
 
 		<a href="/" class="btn-back">목록으로</a>
