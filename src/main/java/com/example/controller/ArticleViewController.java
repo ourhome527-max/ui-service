@@ -77,9 +77,9 @@ public class ArticleViewController {
 				log.info("게시글 데이터 수신 성공 -> ID: {}, 제목: {}, 작성자: {}", article.getId(), article.getTitle(),
 						article.getWriterId());
 
-				if (article.getFiles() != null) {
-					log.info("첨부파일 개수: {}", article.getFiles().size());
-					article.getFiles().forEach(file -> log.info(" - 파일정보: id={}, path={}, name={}", file.getFileId(),
+				if (article.getFileList() != null) {
+					log.info("첨부파일 개수: {}", article.getFileList().size());
+					article.getFileList().forEach(file -> log.info(" - 파일정보: id={}, path={}, name={}", file.getFileId(),
 							file.getPath(), file.getOriginalName()));
 				} else {
 					log.info("첨부파일 없음 (files list is null)");

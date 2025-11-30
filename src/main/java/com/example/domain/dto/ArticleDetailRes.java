@@ -24,5 +24,5 @@ public class ArticleDetailRes {
 	private String category;
 	private Date regAt;
 	private Date modAt;
-	private List<FileMeta> files;
+	private List<FileMeta> fileList;
 }
