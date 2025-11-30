@@ -37,6 +37,7 @@ dependencies {
         
         implementation 'io.github.openfeign.form:feign-form-spring:3.8.0'
    		implementation 'io.github.openfeign.form:feign-form:3.8.0'
+   		implementation 'org.springframework:spring-test'
 }
 dependencyManagement {
     imports {
